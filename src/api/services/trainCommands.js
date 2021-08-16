@@ -16,9 +16,9 @@ for (let i = 0; i < commands.length; i++) {
 }
 
 // Train and save the model.
-(async () => {
-  await manager.train();
-  manager.save("./src/api/trainedModels/commands.nlp");
-  const response = await manager.process("en", "create row");
-  console.log(response);
-})();
+// (async () => {
+//   await manager.train();
+//   manager.save("./src/api/trainedModels/commands.nlp");
+//   const response = await manager.process("en", "create row");
+//   console.log(response);
+// })();

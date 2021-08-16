@@ -1,11 +1,12 @@
 const express = require("express");
+// const { CommandRoute } = require("./Command");
 
 const router = express.Router();
 
 const defaultRoutes = [
   // {
-  //   path: "/atoms",
-  //   route: AtomRoute,
+  //   path: "/commands",
+  //   route: CommandRoute,
   // },
 ];
 

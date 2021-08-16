@@ -9,6 +9,7 @@ const entitiesContent = fs.readFileSync("./src/api/trainedModels/entities.nlp");
 const entities = JSON.parse(entitiesContent);
 
 async function parseSimpleAction(command) {
+  // TODO as an idea - implement NOUN, VERB detectors
   const extractionResult = keywordExtractor.extract(command, {
     language: "english",
     remove_digits: true,
@@ -20,7 +21,7 @@ async function parseSimpleAction(command) {
     if (entities[word]) {
       result[entities[word]] = word;
     } else {
-      // Check typo here
+      // TODO Check typo here
     }
   });
   return result;

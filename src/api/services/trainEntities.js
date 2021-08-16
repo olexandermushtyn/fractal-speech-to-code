@@ -12,6 +12,7 @@ const elements = JSON.parse(elementsExtendedContent);
 
 const entities = {};
 
+// TODO refactor this code
 actions.forEach((action) => {
   entities[action.origin] = "action";
   action.synonyms &&
