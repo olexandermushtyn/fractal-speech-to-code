@@ -1,0 +1,658 @@
+{
+  "settings": {
+    "languages": [
+      "en"
+    ],
+    "forceNER": true,
+    "autoSave": false,
+    "tag": "nlp",
+    "threshold": 0.5,
+    "autoLoad": true,
+    "modelFileName": "model.nlp",
+    "calculateSentiment": true
+  },
+  "nluManager": {
+    "settings": {
+      "tag": "nlu-manager"
+    },
+    "locales": [
+      "en"
+    ],
+    "languageNames": {},
+    "domainManagers": {
+      "en": {
+        "settings": {
+          "locale": "en",
+          "trainByDomain": false,
+          "tag": "domain-manager-en",
+          "nluByDomain": {
+            "default": {
+              "className": "NeuralNlu",
+              "settings": {}
+            }
+          },
+          "useStemDict": true
+        },
+        "stemDict": {
+          "add,contain": {
+            "intent": "simpleAction",
+            "domain": "default"
+          },
+          "add,row": {
+            "intent": "simpleAction",
+            "domain": "default"
+          },
+          "add,column": {
+            "intent": "simpleAction",
+            "domain": "default"
+          },
+          "add,button": {
+            "intent": "simpleAction",
+            "domain": "default"
+          },
+          "add,input": {
+            "intent": "simpleAction",
+            "domain": "default"
+          },
+          "contain,insert": {
+            "intent": "simpleAction",
+            "domain": "default"
+          },
+          "insert,row": {
+            "intent": "simpleAction",
+            "domain": "default"
+          },
+          "column,insert": {
+            "intent": "simpleAction",
+            "domain": "default"
+          },
+          "button,insert": {
+            "intent": "simpleAction",
+            "domain": "default"
+          },
+          "input,insert": {
+            "intent": "simpleAction",
+            "domain": "default"
+          },
+          "contain,creat": {
+            "intent": "simpleAction",
+            "domain": "default"
+          },
+          "creat,row": {
+            "intent": "simpleAction",
+            "domain": "default"
+          },
+          "column,creat": {
+            "intent": "simpleAction",
+            "domain": "default"
+          },
+          "button,creat": {
+            "intent": "simpleAction",
+            "domain": "default"
+          },
+          "creat,input": {
+            "intent": "simpleAction",
+            "domain": "default"
+          },
+          "contain,edit": {
+            "intent": "simpleAction",
+            "domain": "default"
+          },
+          "edit,row": {
+            "intent": "simpleAction",
+            "domain": "default"
+          },
+          "column,edit": {
+            "intent": "simpleAction",
+            "domain": "default"
+          },
+          "button,edit": {
+            "intent": "simpleAction",
+            "domain": "default"
+          },
+          "edit,input": {
+            "intent": "simpleAction",
+            "domain": "default"
+          },
+          "contain,updat": {
+            "intent": "simpleAction",
+            "domain": "default"
+          },
+          "row,updat": {
+            "intent": "simpleAction",
+            "domain": "default"
+          },
+          "column,updat": {
+            "intent": "simpleAction",
+            "domain": "default"
+          },
+          "button,updat": {
+            "intent": "simpleAction",
+            "domain": "default"
+          },
+          "input,updat": {
+            "intent": "simpleAction",
+            "domain": "default"
+          },
+          "contain,delet": {
+            "intent": "simpleAction",
+            "domain": "default"
+          },
+          "delet,row": {
+            "intent": "simpleAction",
+            "domain": "default"
+          },
+          "column,delet": {
+            "intent": "simpleAction",
+            "domain": "default"
+          },
+          "button,delet": {
+            "intent": "simpleAction",
+            "domain": "default"
+          },
+          "delet,input": {
+            "intent": "simpleAction",
+            "domain": "default"
+          },
+          "contain,remov": {
+            "intent": "simpleAction",
+            "domain": "default"
+          },
+          "remov,row": {
+            "intent": "simpleAction",
+            "domain": "default"
+          },
+          "column,remov": {
+            "intent": "simpleAction",
+            "domain": "default"
+          },
+          "button,remov": {
+            "intent": "simpleAction",
+            "domain": "default"
+          },
+          "input,remov": {
+            "intent": "simpleAction",
+            "domain": "default"
+          }
+        },
+        "intentDict": {
+          "simpleAction": "default"
+        },
+        "sentences": [
+          {
+            "domain": "default",
+            "utterance": "add container",
+            "intent": "simpleAction"
+          },
+          {
+            "domain": "default",
+            "utterance": "add row",
+            "intent": "simpleAction"
+          },
+          {
+            "domain": "default",
+            "utterance": "add column",
+            "intent": "simpleAction"
+          },
+          {
+            "domain": "default",
+            "utterance": "add button",
+            "intent": "simpleAction"
+          },
+          {
+            "domain": "default",
+            "utterance": "add input",
+            "intent": "simpleAction"
+          },
+          {
+            "domain": "default",
+            "utterance": "insert container",
+            "intent": "simpleAction"
+          },
+          {
+            "domain": "default",
+            "utterance": "insert row",
+            "intent": "simpleAction"
+          },
+          {
+            "domain": "default",
+            "utterance": "insert column",
+            "intent": "simpleAction"
+          },
+          {
+            "domain": "default",
+            "utterance": "insert button",
+            "intent": "simpleAction"
+          },
+          {
+            "domain": "default",
+            "utterance": "insert input",
+            "intent": "simpleAction"
+          },
+          {
+            "domain": "default",
+            "utterance": "create container",
+            "intent": "simpleAction"
+          },
+          {
+            "domain": "default",
+            "utterance": "create row",
+            "intent": "simpleAction"
+          },
+          {
+            "domain": "default",
+            "utterance": "create column",
+            "intent": "simpleAction"
+          },
+          {
+            "domain": "default",
+            "utterance": "create button",
+            "intent": "simpleAction"
+          },
+          {
+            "domain": "default",
+            "utterance": "create input",
+            "intent": "simpleAction"
+          },
+          {
+            "domain": "default",
+            "utterance": "edit container",
+            "intent": "simpleAction"
+          },
+          {
+            "domain": "default",
+            "utterance": "edit row",
+            "intent": "simpleAction"
+          },
+          {
+            "domain": "default",
+            "utterance": "edit column",
+            "intent": "simpleAction"
+          },
+          {
+            "domain": "default",
+            "utterance": "edit button",
+            "intent": "simpleAction"
+          },
+          {
+            "domain": "default",
+            "utterance": "edit input",
+            "intent": "simpleAction"
+          },
+          {
+            "domain": "default",
+            "utterance": "update container",
+            "intent": "simpleAction"
+          },
+          {
+            "domain": "default",
+            "utterance": "update row",
+            "intent": "simpleAction"
+          },
+          {
+            "domain": "default",
+            "utterance": "update column",
+            "intent": "simpleAction"
+          },
+          {
+            "domain": "default",
+            "utterance": "update button",
+            "intent": "simpleAction"
+          },
+          {
+            "domain": "default",
+            "utterance": "update input",
+            "intent": "simpleAction"
+          },
+          {
+            "domain": "default",
+            "utterance": "delete container",
+            "intent": "simpleAction"
+          },
+          {
+            "domain": "default",
+            "utterance": "delete row",
+            "intent": "simpleAction"
+          },
+          {
+            "domain": "default",
+            "utterance": "delete column",
+            "intent": "simpleAction"
+          },
+          {
+            "domain": "default",
+            "utterance": "delete button",
+            "intent": "simpleAction"
+          },
+          {
+            "domain": "default",
+            "utterance": "delete input",
+            "intent": "simpleAction"
+          },
+          {
+            "domain": "default",
+            "utterance": "remove container",
+            "intent": "simpleAction"
+          },
+          {
+            "domain": "default",
+            "utterance": "remove row",
+            "intent": "simpleAction"
+          },
+          {
+            "domain": "default",
+            "utterance": "remove column",
+            "intent": "simpleAction"
+          },
+          {
+            "domain": "default",
+            "utterance": "remove button",
+            "intent": "simpleAction"
+          },
+          {
+            "domain": "default",
+            "utterance": "remove input",
+            "intent": "simpleAction"
+          }
+        ],
+        "domains": {
+          "master_domain": {
+            "settings": {
+              "locale": "en",
+              "tag": "nlu-en",
+              "keepStopwords": true,
+              "nonefeatureValue": 1,
+              "nonedeltaMultiplier": 1.2,
+              "spellCheck": false,
+              "spellCheckDistance": 1,
+              "filterZeros": true,
+              "log": true
+            },
+            "features": {
+              "add": 1,
+              "contain": 1,
+              "row": 1,
+              "column": 1,
+              "button": 1,
+              "input": 1,
+              "insert": 1,
+              "creat": 1,
+              "edit": 1,
+              "updat": 1,
+              "delet": 1,
+              "remov": 1
+            },
+            "intents": {
+              "simpleAction": 1
+            },
+            "intentFeatures": {
+              "simpleAction": {
+                "add": 1,
+                "contain": 1,
+                "row": 1,
+                "column": 1,
+                "button": 1,
+                "input": 1,
+                "insert": 1,
+                "creat": 1,
+                "edit": 1,
+                "updat": 1,
+                "delet": 1,
+                "remov": 1
+              }
+            },
+            "featuresToIntent": {
+              "add": [
+                "simpleAction"
+              ],
+              "contain": [
+                "simpleAction"
+              ],
+              "row": [
+                "simpleAction"
+              ],
+              "column": [
+                "simpleAction"
+              ],
+              "button": [
+                "simpleAction"
+              ],
+              "input": [
+                "simpleAction"
+              ],
+              "insert": [
+                "simpleAction"
+              ],
+              "creat": [
+                "simpleAction"
+              ],
+              "edit": [
+                "simpleAction"
+              ],
+              "updat": [
+                "simpleAction"
+              ],
+              "delet": [
+                "simpleAction"
+              ],
+              "remov": [
+                "simpleAction"
+              ]
+            },
+            "neuralNetwork": {
+              "settings": {
+                "locale": "en",
+                "tag": "nlu-en",
+                "keepStopwords": true,
+                "nonefeatureValue": 1,
+                "nonedeltaMultiplier": 1.2,
+                "spellCheck": false,
+                "spellCheckDistance": 1,
+                "filterZeros": true,
+                "log": true
+              },
+              "features": [
+                "add",
+                "contain",
+                "row",
+                "column",
+                "button",
+                "input",
+                "insert",
+                "creat",
+                "edit",
+                "updat",
+                "delet",
+                "remov"
+              ],
+              "intents": [
+                "simpleAction"
+              ],
+              "perceptrons": [
+                [
+                  2.4129323959350586,
+                  3.3927597999572754,
+                  3.394700527191162,
+                  3.3924527168273926,
+                  3.389883041381836,
+                  3.386263608932495,
+                  2.4512126445770264,
+                  2.4649908542633057,
+                  2.4644556045532227,
+                  2.444704055786133,
+                  2.40362548828125,
+                  2.3411402702331543,
+                  8.490368754361326
+                ]
+              ]
+            }
+          }
+        }
+      }
+    },
+    "intentDomains": {},
+    "extraSentences": [
+      [
+        "en",
+        "add container"
+      ],
+      [
+        "en",
+        "add row"
+      ],
+      [
+        "en",
+        "add column"
+      ],
+      [
+        "en",
+        "add button"
+      ],
+      [
+        "en",
+        "add input"
+      ],
+      [
+        "en",
+        "insert container"
+      ],
+      [
+        "en",
+        "insert row"
+      ],
+      [
+        "en",
+        "insert column"
+      ],
+      [
+        "en",
+        "insert button"
+      ],
+      [
+        "en",
+        "insert input"
+      ],
+      [
+        "en",
+        "create container"
+      ],
+      [
+        "en",
+        "create row"
+      ],
+      [
+        "en",
+        "create column"
+      ],
+      [
+        "en",
+        "create button"
+      ],
+      [
+        "en",
+        "create input"
+      ],
+      [
+        "en",
+        "edit container"
+      ],
+      [
+        "en",
+        "edit row"
+      ],
+      [
+        "en",
+        "edit column"
+      ],
+      [
+        "en",
+        "edit button"
+      ],
+      [
+        "en",
+        "edit input"
+      ],
+      [
+        "en",
+        "update container"
+      ],
+      [
+        "en",
+        "update row"
+      ],
+      [
+        "en",
+        "update column"
+      ],
+      [
+        "en",
+        "update button"
+      ],
+      [
+        "en",
+        "update input"
+      ],
+      [
+        "en",
+        "delete container"
+      ],
+      [
+        "en",
+        "delete row"
+      ],
+      [
+        "en",
+        "delete column"
+      ],
+      [
+        "en",
+        "delete button"
+      ],
+      [
+        "en",
+        "delete input"
+      ],
+      [
+        "en",
+        "remove container"
+      ],
+      [
+        "en",
+        "remove row"
+      ],
+      [
+        "en",
+        "remove column"
+      ],
+      [
+        "en",
+        "remove button"
+      ],
+      [
+        "en",
+        "remove input"
+      ]
+    ]
+  },
+  "ner": {
+    "settings": {
+      "tag": "ner",
+      "entityPreffix": "%",
+      "entitySuffix": "%"
+    },
+    "rules": {}
+  },
+  "nlgManager": {
+    "settings": {
+      "tag": "nlg-manager"
+    },
+    "responses": {}
+  },
+  "actionManager": {
+    "settings": {
+      "tag": "action-manager"
+    },
+    "actions": {}
+  },
+  "slotManager": {}
+}
