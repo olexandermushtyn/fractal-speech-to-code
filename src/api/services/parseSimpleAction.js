@@ -1,8 +1,8 @@
 const keywordExtractor = require("keyword-extractor");
 const fs = require("fs");
 
-var Typo = require("typo-js");
-var dictionary = new Typo("en_US");
+const typo = require("typo-js");
+const dictionary = new typo("en_US");
 
 const entitiesContent = fs.readFileSync("./src/api/trainedModels/entities.nlp");
 
@@ -21,7 +21,12 @@ async function parseSimpleAction(command) {
     if (entities[word]) {
       result[entities[word]] = word;
     } else {
-      // TODO Check typo here
+      if (!dictionary.check(word)) {
+        word = dictionary.suggest(word)[0];
+        if (entities[word]) {
+          result[entities[word]] = word;
+        }
+      }
     }
   });
   return result;
