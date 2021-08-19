@@ -5,8 +5,7 @@ const commandMethodMap = {
   simpleAction: parseSimpleAction
 }
 
-const command = 'I want to add fantastic row'
-
+const command = 'I want to add column into row with id 8'
 recognizeCommand(command).then((result) => {
   const commandType = result.classifications[0].intent
   commandMethodMap[commandType](command).then((result) => {
