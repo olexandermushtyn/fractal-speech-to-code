@@ -1,0 +1,12 @@
+{
+  "row": {
+    "<>": "div",
+    "class": "row",
+    "html": []
+  },
+  "col": {
+    "<>": "div",
+    "class": "col",
+    "html": []
+  }
+}

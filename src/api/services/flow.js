@@ -1,15 +1,15 @@
-const recognizeCommand = require("./recognizeCommand");
-const parseSimpleAction = require("./parseSimpleAction");
+const recognizeCommand = require('./recognizeCommand')
+const parseSimpleAction = require('./parseSimpleAction')
 
 const commandMethodMap = {
-  simpleAction: parseSimpleAction,
-};
+  simpleAction: parseSimpleAction
+}
 
-const command = "I want to insart factastic row";
+const command = 'I want to add fantastic row'
 
 recognizeCommand(command).then((result) => {
-  const commandType = result.classifications[0].intent;
+  const commandType = result.classifications[0].intent
   commandMethodMap[commandType](command).then((result) => {
-    console.log(result);
-  });
-});
+    console.log(result)
+  })
+})
