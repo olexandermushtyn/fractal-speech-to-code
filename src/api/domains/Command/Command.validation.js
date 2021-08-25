@@ -1,13 +1,13 @@
 const Joi = require("joi");
 
 // Example below
-const methodName = {
+const getHtml = {
   body: {
-    param1: Joi.string().required(),
-    param2: Joi.string(),
-  },
-};
+    // param1: Joi.string().required(),
+    // param2: Joi.string(),
+  }
+}
 
 module.exports = {
-  methodName,
+  getHtml,
 };

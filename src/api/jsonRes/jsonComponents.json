@@ -2,11 +2,13 @@
   "row": {
     "<>": "div",
     "class": "row",
+    "id":"",
     "html": []
   },
-  "col": {
+  "column": {
     "<>": "div",
     "class": "col",
+    "id":"",
     "html": []
   }
 }

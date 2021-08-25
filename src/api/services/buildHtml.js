@@ -2,11 +2,11 @@ const fs = require('fs')
 const { func } = require('joi')
 const json2html = require('node-json2html')
 
-let buildedCommand = {
-  action: 'add',
-  element: 'row',
-  id: '7'
-}
+// let buildedCommand = {
+//   action: 'add',
+//   element: 'row',
+//   id: '1'
+// }
 
 function buildHtml(buildedCommand) {
   let template = JSON.parse(
@@ -27,8 +27,13 @@ function buildHtml(buildedCommand) {
   }
 
   let html = json2html.render({}, template)
-
-  fs.writeFileSync('./src/api/jsonRes/result.html', html)
+  fs,
+    fs.writeFileSync(
+      './src/api/jsonRes/modelOfHtml.json',
+      JSON.stringify(template)
+    )
+  return html
+  // fs.writeFileSync('./src/api/jsonRes/result.html', html)
 }
 
 function findFreeId(template) {
@@ -45,6 +50,7 @@ function findFreeId(template) {
 
 function findAllId(template, existedId) {
   for (const key of Object.keys(template)) {
+    console.log(template[key])
     if (isNumeric(template[key]['id']))
       existedId.push(parseInt(template[key]['id']))
     if (Array.isArray(template[key]['html'])) {
@@ -55,6 +61,7 @@ function findAllId(template, existedId) {
 }
 function deleteById(template, id) {
   for (const key of Object.keys(template)) {
+  
     if (template[key]['id'] == id) {
       delete template[key]
       return
@@ -68,4 +75,4 @@ function isNumeric(value) {
   return /^\d+$/.test(value)
 }
 
-buildHtml(buildedCommand)
+module.exports = buildHtml

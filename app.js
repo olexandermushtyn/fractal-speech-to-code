@@ -44,7 +44,13 @@ app.use(express.json())
 
 app.use(cors())
 
-app.use('/api/', routesV1)
+
+// const router = express.Router()
+// router.get('/commands', function (req, res) {
+//   res.send('Birds home page')
+// })
+app.use('/api', routesV1)
+
 
 app.listen(port, () => {
   logger.info(`Listening at port: ${port}`)

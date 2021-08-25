@@ -1,5 +1,5 @@
 class CommandService {
-  constructor()
+  constructor() {}
 
   // Some dirty methods here
 }

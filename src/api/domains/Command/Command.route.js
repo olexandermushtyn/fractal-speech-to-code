@@ -17,6 +17,6 @@ const Controller = new CommandController();
  * @apiSuccess {String} 200 OK.
  */
 
-router.route("/").post(validate(Validation.methodName), Controller.methodName);
+router.route('/').post(Controller.getHtml)
 
 module.exports = router;
