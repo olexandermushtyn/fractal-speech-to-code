@@ -23,6 +23,8 @@ import SpeechToText from "speech-to-text";
 
 import supportedLanguages from "./supportedLanguages";
 
+import EditorWithCode from "./Editor";
+
 const styles = (theme) => ({
   root: {
     paddingTop: 65,
@@ -61,6 +63,7 @@ class SpeechToTextDemo extends Component {
     finalisedText: [],
     listening: false,
     language: "en-US",
+    code: "",
   };
 
   onAnythingSaid = (text) => {
@@ -89,6 +92,9 @@ class SpeechToTextDemo extends Component {
     response.then((value) => {
       responseObj = value;
       console.log(responseObj.html);
+      this.setState({
+        code: responseObj.html,
+      });
     });
   };
 
@@ -232,6 +238,11 @@ class SpeechToTextDemo extends Component {
               <Grid item xs={12}></Grid>
             </Grid>
             {content}
+            <Grid container>
+              <Grid item xs={12} mt={50}>
+                <EditorWithCode codeText={this.state.code} />
+              </Grid>
+            </Grid>
           </Grid>
         </Grid>
       </Grid>
