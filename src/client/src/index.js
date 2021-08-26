@@ -3,8 +3,6 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import SpeechToTextDemo from "./SpeechToTextDemo";
 import reportWebVitals from "./reportWebVitals";
-import Editor from "@uiw/react-monacoeditor";
-
 ReactDOM.render(
   <React.StrictMode>
     <SpeechToTextDemo></SpeechToTextDemo>

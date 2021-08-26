@@ -199,24 +199,33 @@ class SpeechToTextDemo extends Component {
           </Grid>
           <Grid item xs={12}>
             <Paper className={classes.paper}>
-              <Table className={classes.table}>
-                <TableHead>
-                  <TableRow>
-                    <TableCell>Finalised Text</TableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  {finalisedText.map((str, index) => {
-                    return (
-                      <TableRow key={index}>
-                        <TableCell component="th" scope="row">
-                          {str}
+              <Grid container>
+                <Grid item xs={9} mt={50}>
+                  <EditorWithCode codeText={this.state.code} />
+                </Grid>
+                <Grid item xs={3}>
+                  <Table className={classes.table}>
+                    <TableHead>
+                      <TableRow>
+                        <TableCell>
+                          <Typography variant="h6">Finalised Text</Typography>
                         </TableCell>
                       </TableRow>
-                    );
-                  })}
-                </TableBody>
-              </Table>
+                    </TableHead>
+                    <TableBody>
+                      {finalisedText.map((str, index) => {
+                        return (
+                          <TableRow key={index}>
+                            <TableCell component="th" scope="row">
+                              {str}
+                            </TableCell>
+                          </TableRow>
+                        );
+                      })}
+                    </TableBody>
+                  </Table>
+                </Grid>
+              </Grid>
             </Paper>
           </Grid>
         </Grid>
@@ -238,11 +247,6 @@ class SpeechToTextDemo extends Component {
               <Grid item xs={12}></Grid>
             </Grid>
             {content}
-            <Grid container>
-              <Grid item xs={12} mt={50}>
-                <EditorWithCode codeText={this.state.code} />
-              </Grid>
-            </Grid>
           </Grid>
         </Grid>
       </Grid>
