@@ -16,11 +16,10 @@ function buildHtml(buildedCommand) {
     fs.readFileSync('./src/api/jsonRes/jsonComponents.json')
   )
 
-  //clean up template from null and undefinded 
+  //clean up template from null and undefinded
   template = template.filter(function (el) {
     return el != null
   })
-
 
   if (buildedCommand.action == 'add') {
     let component = components[buildedCommand.element]
@@ -33,11 +32,11 @@ function buildHtml(buildedCommand) {
   }
 
   let html = json2html.render({}, template)
-  fs,
-    fs.writeFileSync(
-      './src/api/jsonRes/modelOfHtml.json',
-      JSON.stringify(template)
-    )
+
+  fs.writeFileSync(
+    './src/api/jsonRes/modelOfHtml.json',
+    JSON.stringify(template)
+  )
   return html
   // fs.writeFileSync('./src/api/jsonRes/result.html', html)
 }
@@ -67,7 +66,6 @@ function findAllId(template, existedId) {
 }
 function deleteById(template, id) {
   for (const key of Object.keys(template)) {
-  
     if (template[key]['id'] == id) {
       delete template[key]
       return
