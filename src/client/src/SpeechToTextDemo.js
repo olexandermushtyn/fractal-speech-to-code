@@ -41,6 +41,14 @@ const styles = (theme) => ({
   }),
 });
 
+async function postData(url, data) {
+  const response = await fetch(url, {
+    method: "Post",
+    body: data,
+  });
+  return await response.json();
+}
+
 class SpeechToTextDemo extends Component {
   state = {
     error: "",
@@ -67,6 +75,8 @@ class SpeechToTextDemo extends Component {
       finalisedText: [text, ...this.state.finalisedText],
       interimText: "",
     });
+    console.log(this.state.interimText);
+    postData("http://localhost:3000/api/get-html", this.state.interimText);
   };
 
   startListening = () => {
