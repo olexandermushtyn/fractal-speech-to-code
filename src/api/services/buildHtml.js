@@ -25,7 +25,9 @@ function buildHtml(buildedCommand) {
     let component = components[buildedCommand.element]
 
     component['id'] = findFreeId(template)
-    template.push(component)
+    if (buildedCommand.id) {
+      addIntoElementWithId(template, component, buildedCommand.id)
+    } else template.push(component)
   } else if (buildedCommand.action == 'delete') {
     //find by id and delete this element
     deleteById(template, buildedCommand.id)
@@ -53,9 +55,17 @@ function findFreeId(template) {
   }
 }
 
+function addIntoElementWithId(template, component, id) {
+  for (const key of Object.keys(template)) {
+    if (template[key]['id'] == id)
+      template[key]['html'].push(component)
+    else if (Array.isArray(template[key]['html']))
+    addIntoElementWithId(template[key], component, id)
+  }
+}
+
 function findAllId(template, existedId) {
   for (const key of Object.keys(template)) {
-    console.log(template[key])
     if (isNumeric(template[key]['id']))
       existedId.push(parseInt(template[key]['id']))
     if (Array.isArray(template[key]['html'])) {
