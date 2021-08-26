@@ -16,6 +16,12 @@ function buildHtml(buildedCommand) {
     fs.readFileSync('./src/api/jsonRes/jsonComponents.json')
   )
 
+  //clean up template from null and undefinded 
+  template = template.filter(function (el) {
+    return el != null
+  })
+
+
   if (buildedCommand.action == 'add') {
     let component = components[buildedCommand.element]
 
@@ -43,7 +49,7 @@ function findFreeId(template) {
   let i = 1
   while (true) {
     if (!existedId.includes(i)) {
-      return i
+      return i.toString()
     } else i++
   }
 }
