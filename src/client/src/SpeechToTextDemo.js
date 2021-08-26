@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import { withStyles } from '@material-ui/core/styles'
+import React, { Component } from "react";
+import { withStyles } from "@material-ui/core/styles";
 import {
   Paper,
   Button,
@@ -16,58 +16,68 @@ import {
   InputLabel,
   Select,
   MenuItem,
-  FormHelperText
-} from '@material-ui/core'
-import withWidth, { isWidthUp } from '@material-ui/core/withWidth'
-import SpeechToText from 'speech-to-text'
+  FormHelperText,
+} from "@material-ui/core";
+import withWidth, { isWidthUp } from "@material-ui/core/withWidth";
+import SpeechToText from "speech-to-text";
 
-import supportedLanguages from './supportedLanguages'
+import supportedLanguages from "./supportedLanguages";
 
 const styles = (theme) => ({
   root: {
     paddingTop: 65,
     paddingLeft: 11,
-    paddingRight: 11
+    paddingRight: 11,
   },
   flex: {
-    flex: 1
+    flex: 1,
   },
   grow: {
-    flexGrow: 1
+    flexGrow: 1,
   },
   paper: theme.mixins.gutters({
     paddingTop: 22,
-    paddingBottom: 22
-  })
-})
+    paddingBottom: 22,
+  }),
+});
+
+async function postData(url, data) {
+  const response = await fetch(url, {
+    method: "Post",
+    body: data,
+  });
+  return await response.json();
+}
 
 class SpeechToTextDemo extends Component {
   state = {
-    error: '',
-    interimText: '',
+    error: "",
+    interimText: "",
     finalisedText: [],
     listening: false,
-    language: 'en-US'
-  }
+    language: "en-US",
+  };
 
   onAnythingSaid = (text) => {
-    this.setState({ interimText: text })
-  }
+    this.setState({ interimText: text });
+  };
 
   onEndEvent = () => {
-    if (!isWidthUp('sm', this.props.width)) {
-      this.setState({ listening: false })
+    if (!isWidthUp("sm", this.props.width)) {
+      this.setState({ listening: false });
     } else if (this.state.listening) {
-      this.startListening()
+      this.startListening();
     }
-  }
+  };
 
   onFinalised = (text) => {
     this.setState({
       finalisedText: [text, ...this.state.finalisedText],
-      interimText: ''
-    })
-  }
+      interimText: "",
+    });
+    console.log(this.state.interimText);
+    postData("http://localhost:3000/api/get-html", this.state.interimText);
+  };
 
   startListening = () => {
     try {
@@ -76,25 +86,25 @@ class SpeechToTextDemo extends Component {
         this.onEndEvent,
         this.onAnythingSaid,
         this.state.language
-      )
-      this.listener.startListening()
-      this.setState({ listening: true })
+      );
+      this.listener.startListening();
+      this.setState({ listening: true });
     } catch (err) {
-      console.log('yoyoy')
-      console.log(err)
+      console.log("yoyoy");
+      console.log(err);
     }
-  }
+  };
 
   stopListening = () => {
-    this.listener.stopListening()
-    this.setState({ listening: false })
-  }
+    this.listener.stopListening();
+    this.setState({ listening: false });
+  };
 
   render() {
     const { error, interimText, finalisedText, listening, language } =
-      this.state
-    const { classes } = this.props
-    let content
+      this.state;
+    const { classes } = this.props;
+    let content;
     if (error) {
       content = (
         <Paper className={classes.paper}>
@@ -102,16 +112,16 @@ class SpeechToTextDemo extends Component {
             {error}
           </Typography>
         </Paper>
-      )
+      );
     } else {
-      let buttonForListening
+      let buttonForListening;
 
       if (listening) {
         buttonForListening = (
           <Button color="primary" onClick={() => this.stopListening()}>
             Stop Listening
           </Button>
-        )
+        );
       } else {
         buttonForListening = (
           <Button
@@ -121,7 +131,7 @@ class SpeechToTextDemo extends Component {
           >
             Start Listening
           </Button>
-        )
+        );
       }
       content = (
         <Grid container spacing={8}>
@@ -130,7 +140,7 @@ class SpeechToTextDemo extends Component {
               <Grid container spacing={8}>
                 <Grid item xs={12} lg={6}>
                   <Typography variant="overline" gutterBottom>
-                    Status: {listening ? 'listening...' : 'finished listening'}
+                    Status: {listening ? "listening..." : "finished listening"}
                   </Typography>
                   {buttonForListening}
                 </Grid>
@@ -184,14 +194,14 @@ class SpeechToTextDemo extends Component {
                           {str}
                         </TableCell>
                       </TableRow>
-                    )
+                    );
                   })}
                 </TableBody>
               </Table>
             </Paper>
           </Grid>
         </Grid>
-      )
+      );
     }
 
     return (
@@ -199,35 +209,21 @@ class SpeechToTextDemo extends Component {
         <AppBar position="static">
           <Toolbar>
             <Typography variant="h6" className={classes.grow} color="inherit">
-              Speech To Text Demo
+              Fractal AI-SERVER-QODER
             </Typography>
-            <Button
-              color="inherit"
-              href="https://github.com/magician11/speech-to-text-demo"
-            >
-              Source on GitHub
-            </Button>
           </Toolbar>
         </AppBar>
         <Grid container justify="center" className={classes.root}>
           <Grid item xs={12} sm={8}>
             <Grid container>
-              <Grid item xs={12}>
-                <Typography variant="subtitle1" gutterBottom>
-                  This is a demo for the{' '}
-                  <a href="https://www.npmjs.com/package/speech-to-text">
-                    speech-to-text module on npm
-                  </a>
-                  .
-                </Typography>
-              </Grid>
+              <Grid item xs={12}></Grid>
             </Grid>
             {content}
           </Grid>
         </Grid>
       </Grid>
-    )
+    );
   }
 }
 
-export default withWidth()(withStyles(styles)(SpeechToTextDemo))
+export default withWidth()(withStyles(styles)(SpeechToTextDemo));
