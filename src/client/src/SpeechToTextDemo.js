@@ -41,10 +41,15 @@ const styles = (theme) => ({
   }),
 });
 
+const myHeaders = new Headers();
+myHeaders.append("Content-Type", "application/json");
+
 async function postData(url, data) {
+  console.log(data);
   const response = await fetch(url, {
     method: "Post",
-    body: data,
+    headers: myHeaders,
+    body: JSON.stringify(data),
   });
   return await response.json();
 }
@@ -71,12 +76,20 @@ class SpeechToTextDemo extends Component {
   };
 
   onFinalised = (text) => {
+    let responseObj = {};
     this.setState({
       finalisedText: [text, ...this.state.finalisedText],
       interimText: "",
     });
-    console.log(this.state.interimText);
-    postData("http://localhost:3000/api/get-html", this.state.interimText);
+    console.log(this.state.finalisedText[0]);
+    let response = postData("http://localhost:3000/api/get-html", {
+      str: this.state.finalisedText[0],
+    });
+    console.log(response);
+    response.then((value) => {
+      responseObj = value;
+      console.log(responseObj.html);
+    });
   };
 
   startListening = () => {
@@ -213,7 +226,7 @@ class SpeechToTextDemo extends Component {
             </Typography>
           </Toolbar>
         </AppBar>
-        <Grid container justify="center" className={classes.root}>
+        <Grid container justifyContent="center" className={classes.root}>
           <Grid item xs={12} sm={8}>
             <Grid container>
               <Grid item xs={12}></Grid>
