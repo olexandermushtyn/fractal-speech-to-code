@@ -1,18 +1,29 @@
-// const CommandService = require('./Command.service');
-// const httpStatus = require('http-status');
+const CommandService = require('./Command.service')
+const httpStatus = require('http-status')
+
+const recognizeCommand = require('../../services/recognizeCommand')
+const parseSimpleAction = require('../../services/parseSimpleAction')
+const buildHtml = require('../../services/buildHtml')
 
 class CommandController {
   constructor() {}
 
-  // async methodName(req, res) {
-  //   const { param1, param2 } = req.body;
+  getHtml(req, res) {
+    const { str } = req.body
 
-  //   const service = new CommandService();
-  //   await service.someAction(param1);
+    recognizeCommand(str).then((result) => {
+      const commandMethodMap = {
+        simpleAction: parseSimpleAction
+      }
 
-  //   // Sending response
-  //   res.status(httpStatus[200]).send('some data');
-  // }
+      const commandType = result.classifications[0].intent
+      commandMethodMap[commandType](str).then((result) => {
+        res.status(200).send(buildHtml(result))
+      })
+    })
+    // Sending response
+    //status(httpStatus[200]).
+  }
 }
 
-module.exports = CommandController;
+module.exports = CommandController

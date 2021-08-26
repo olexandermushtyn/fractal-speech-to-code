@@ -7,5 +7,5 @@ module.exports = {
   CommandController,
   CommandRoute,
   CommandService,
-  CommandValidation,
-};
+  CommandValidation
+}

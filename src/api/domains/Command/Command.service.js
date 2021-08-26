@@ -1,7 +1,9 @@
+
 class CommandService {
-  constructor()
+  constructor() {}
 
   // Some dirty methods here
 }
+
 
 module.exports = CommandService

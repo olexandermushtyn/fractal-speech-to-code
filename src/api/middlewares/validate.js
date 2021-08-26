@@ -1,7 +1,7 @@
 const Joi = require("joi");
 const httpStatus = require("http-status");
 const pick = require("../utils/pick");
-const ApiError = require("../../../global/ApiError");
+const ApiError = require("../../global/ApiError");
 
 /**
  * Middleware that helps to validate request params, body and queries

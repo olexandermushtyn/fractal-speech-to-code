@@ -1,15 +1,14 @@
 const express = require("express");
-// const { CommandRoute } = require("./Command");
+const { CommandRoute } = require("./Command");
 
 const router = express.Router();
 
 const defaultRoutes = [
-  // {
-  //   path: "/commands",
-  //   route: CommandRoute,
-  // },
+  {
+    path: "/get-html",
+    route: CommandRoute,
+  },
 ];
-
 defaultRoutes.forEach((route) => {
   router.use(route.path, route.route);
 });
