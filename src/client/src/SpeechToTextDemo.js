@@ -58,6 +58,13 @@ async function postData(url, data) {
   return await response.json();
 }
 
+async function downloadCode() {
+  const url = "http://localhost:3000/api/download-html";
+  const response = await fetch(url, {
+    method: "GET",
+  });
+  return await response;
+}
 class SpeechToTextDemo extends Component {
   state = {
     error: "",
@@ -87,7 +94,7 @@ class SpeechToTextDemo extends Component {
       interimText: "",
     });
     console.log(this.state.finalisedText[0]);
-    let response = postData("http://localhost:3000/api/get-html", {
+    let response = postData("http://localhost:3000/api/commands/get-html", {
       str: this.state.finalisedText[0],
     });
     console.log(response);
@@ -198,6 +205,16 @@ class SpeechToTextDemo extends Component {
                 {interimText}
               </Typography>
             </Paper>
+
+            <Button
+              href="http://localhost:3000/api/commands/download-html"
+              color="primary"
+              onClick={() => downloadCode()}
+              target="_blanc"
+              download
+            >
+              Download Code
+            </Button>
           </Grid>
           <Grid item xs={12}>
             <Paper className={classes.paper}>
