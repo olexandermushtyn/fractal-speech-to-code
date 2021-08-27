@@ -1,4 +1,5 @@
 const express = require('express')
+const fs = require('fs')
 const logger = require('./src/global/logger')
 const routesV1 = require('./src/api/domains/routes')
 const cors = require('cors')
@@ -51,6 +52,7 @@ app.use(cors())
 // })
 app.use('/api', routesV1)
 
+fs.writeFileSync('./src/api/jsonRes/modelOfHtml.json', "[]")
 
 app.listen(port, () => {
   logger.info(`Listening at port: ${port}`)

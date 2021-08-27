@@ -13,6 +13,6 @@ const command = 'I want to add row'
 recognizeCommand(command).then((result) => {
   const commandType = result.classifications[0].intent
   commandMethodMap[commandType](command).then((result) => {
-    console.log(buildHtml(result))
+    buildHtml(result)
   })
 })
