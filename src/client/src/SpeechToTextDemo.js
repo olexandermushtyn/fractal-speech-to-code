@@ -24,6 +24,7 @@ import SpeechToText from "speech-to-text";
 import supportedLanguages from "./supportedLanguages";
 
 import EditorWithCode from "./Editor";
+import formatter from "html-formatter";
 
 const styles = (theme) => ({
   root: {
@@ -93,9 +94,12 @@ class SpeechToTextDemo extends Component {
     response.then((value) => {
       responseObj = value;
       console.log(responseObj.html);
-      this.setState({
-        code: responseObj.html,
-      });
+      if (responseObj.html === undefined);
+      else {
+        this.setState({
+          code: formatter.render(responseObj.html),
+        });
+      }
     });
   };
 

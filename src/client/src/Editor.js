@@ -30,7 +30,7 @@ function EditorWithCode(props) {
       // Render horizontal scrollbar.
       // Accepted values: 'auto', 'visible', 'hidden'.
       // Defaults to 'auto'
-      horizontal: "visible",
+      horizontal: "auto",
       verticalScrollbarSize: 17,
       horizontalScrollbarSize: 17,
       arrowSize: 30,
@@ -46,7 +46,7 @@ function EditorWithCode(props) {
 
   return (
     <MonacoEditor
-      height="500px"
+      height="1000px"
       language="html"
       onChange={onChange}
       value={code}
