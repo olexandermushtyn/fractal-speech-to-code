@@ -2,13 +2,38 @@
   "row": {
     "<>": "div",
     "class": "row",
-    "id":"",
+    "id": "",
     "html": []
   },
   "column": {
     "<>": "div",
     "class": "col",
-    "id":"",
+    "id": "",
+    "html": []
+  },
+  "button": {
+    "<>": "button",
+    "class": "button",
+    "id": "",
+    "html": []
+  },
+  "input": {
+    "<>": "input",
+    "type": "input",
+    "id": "",
+    "html": []
+  },
+  "container": {
+    "<>": "div",
+    "class": "container",
+    "id": "",
+    "html": []
+  },
+  "image": {
+    "<>": "img",
+    "class": "image",
+    "src": "path_to_image",
+    "id": "",
     "html": []
   }
 }

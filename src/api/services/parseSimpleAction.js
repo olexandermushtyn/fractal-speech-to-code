@@ -1,12 +1,20 @@
 const keywordExtractor = require('keyword-extractor')
 const fs = require('fs')
 
-const typo = require("typo-js");
-const dictionary = new typo("en_US");
+const typo = require('typo-js')
+const dictionary = new typo('en_US')
 
 const entitiesContent = fs.readFileSync('./src/api/trainedModels/entities.nlp')
+const actionsExtendedContent = fs.readFileSync(
+  './src/api/entities/actionsExtended.json'
+)
+const elementsExtendedContent = fs.readFileSync(
+  './src/api/entities/elementsExtended.json'
+)
 
 const entities = JSON.parse(entitiesContent)
+const actionsExtended = JSON.parse(actionsExtendedContent)
+const elementsExtended = JSON.parse(elementsExtendedContent)
 
 async function parseSimpleAction(command) {
   // TODO as an idea - implement NOUN, VERB detectors
@@ -26,13 +34,33 @@ async function parseSimpleAction(command) {
       if (!result[entities[word]]) result[entities[word]] = word
     } else {
       if (!dictionary.check(word)) {
-        word = dictionary.suggest(word)[0];
+        word = dictionary.suggest(word)[0]
         if (entities[word]) {
-          result[entities[word]] = word;
+          result[entities[word]] = word
         }
       }
     }
   })
+  // check for synonyms
+  if (result['action']) {
+    let synonymFinded = false
+    actionsExtended.forEach((action) => {
+      if (synonymFinded) return
+
+      if (action['origin'] != result['action']) {
+        if (action['synonyms'])
+          action['synonyms'].forEach((synonym) => {
+            if (result['action'] == synonym) {
+              result['action'] = action['origin']
+              synonymFinded = true
+              return
+            }
+          })
+      }
+    })
+  }
+
+  // console.log(result)
   return result
 }
 function isNumeric(value) {
