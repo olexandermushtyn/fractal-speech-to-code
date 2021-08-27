@@ -1,15 +1,21 @@
 [
-  { "origin": "add", "synonyms": ["add", "append", "supply"] },
-  {
-    "origin": "insert",
-    "synonyms": ["insert", "infix", "enter", "introduce", "enclose", "inclose"]
-  },
-  { "origin": "create", "synonyms": ["create", "make"] },
+  { "origin": "add", "synonyms": [
+    "add",
+    "append",
+    "supply",
+    "insert",
+    "infix",
+    "enter",
+    "introduce",
+    "enclose",
+    "inclose",
+    "create",
+    "make"
+  ] },
   {
     "origin": "edit",
-    "synonyms": ["edit", "cut", "blue-pencil", "delete", "redact"]
+    "synonyms": ["edit", "cut", "blue-pencil", "redact"]
   },
   { "origin": "update" },
-  { "origin": "delete", "synonyms": ["delete", "cancel"] },
-  { "origin": "remove", "synonyms": ["remove", "take", "withdraw", "transfer"] }
+  { "origin": "delete", "synonyms": ["delete", "cancel", "remove", "take", "withdraw", "transfer"] }
 ]

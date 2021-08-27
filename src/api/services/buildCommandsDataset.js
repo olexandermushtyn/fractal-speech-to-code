@@ -14,9 +14,7 @@ let commands = []
 // Generating combinations with actions and elements
 for (let i = 0; i < actions.length; i++) {
   if (actions[i] == 'delete' || actions[i] == 'remove') {
-    console.log(elements['id'][0])
     for (let z = 0; z < elements['id'].length; z++) {
-      console.log(elements['id'][z])
       commands.push({
         command: `${actions[i]} ${elements['id'][z]}`,
         type: 'simpleAction'
