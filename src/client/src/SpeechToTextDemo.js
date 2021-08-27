@@ -58,6 +58,12 @@ async function postData(url, data) {
   return await response.json();
 }
 
+async function downloadCode() {
+  const url = "http://localhost:3000/api/download-html";
+  const response = await fetch(url, {
+    method: "GET",
+  });
+}
 class SpeechToTextDemo extends Component {
   state = {
     error: "",
@@ -198,6 +204,15 @@ class SpeechToTextDemo extends Component {
                 {interimText}
               </Typography>
             </Paper>
+
+            <Button
+              color="primary"
+              onClick={() => downloadCode()}
+              target="_blanc"
+              download
+            >
+              Download Code
+            </Button>
           </Grid>
           <Grid item xs={12}>
             <Paper className={classes.paper}>
