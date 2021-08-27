@@ -4,6 +4,10 @@ const httpStatus = require('http-status')
 const recognizeCommand = require('../../services/recognizeCommand')
 const parseSimpleAction = require('../../services/parseSimpleAction')
 const buildHtml = require('../../services/buildHtml')
+const generateHtmlFile = require('../../services/generateHtmlFile')
+const path = require("path");
+
+__dirname = path.resolve();
 
 class CommandController {
   constructor() {}
@@ -24,6 +28,9 @@ class CommandController {
     })
     // Sending response
     //status(httpStatus[200]).
+  }
+  downloadHtml(req,res) {
+    res.sendFile(path.resolve(__dirname + generateHtmlFile()))
   }
 }
 

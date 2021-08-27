@@ -17,6 +17,8 @@ const Controller = new CommandController();
  * @apiSuccess {String} 200 OK.
  */
 
-router.route('/').post(Controller.getHtml)
+router.route('/get-html').post(Controller.getHtml)
+router.route('/download-html').get(Controller.downloadHtml)
+
 
 module.exports = router;
