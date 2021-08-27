@@ -93,12 +93,9 @@ class SpeechToTextDemo extends Component {
     response.then((value) => {
       responseObj = value;
       console.log(responseObj.html);
-      if (responseObj === undefined) alert("I don`t understand what you sad");
-      else {
-        this.setState({
-          code: responseObj.html,
-        });
-      }
+      this.setState({
+        code: responseObj.html,
+      });
     });
   };
 
