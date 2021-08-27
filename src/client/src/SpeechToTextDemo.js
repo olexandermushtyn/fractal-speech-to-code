@@ -23,6 +23,8 @@ import SpeechToText from "speech-to-text";
 
 import supportedLanguages from "./supportedLanguages";
 
+import EditorWithCode from "./Editor";
+
 const styles = (theme) => ({
   root: {
     paddingTop: 65,
@@ -38,6 +40,7 @@ const styles = (theme) => ({
   paper: theme.mixins.gutters({
     paddingTop: 22,
     paddingBottom: 22,
+    spacing: 8,
   }),
 });
 
@@ -61,6 +64,7 @@ class SpeechToTextDemo extends Component {
     finalisedText: [],
     listening: false,
     language: "en-US",
+    code: "",
   };
 
   onAnythingSaid = (text) => {
@@ -89,6 +93,12 @@ class SpeechToTextDemo extends Component {
     response.then((value) => {
       responseObj = value;
       console.log(responseObj.html);
+      if (responseObj === undefined) alert("I don`t understand what you sad");
+      else {
+        this.setState({
+          code: responseObj.html,
+        });
+      }
     });
   };
 
@@ -102,10 +112,7 @@ class SpeechToTextDemo extends Component {
       );
       this.listener.startListening();
       this.setState({ listening: true });
-    } catch (err) {
-      console.log("yoyoy");
-      console.log(err);
-    }
+    } catch (err) {}
   };
 
   stopListening = () => {
@@ -193,24 +200,43 @@ class SpeechToTextDemo extends Component {
           </Grid>
           <Grid item xs={12}>
             <Paper className={classes.paper}>
-              <Table className={classes.table}>
-                <TableHead>
-                  <TableRow>
-                    <TableCell>Finalised Text</TableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  {finalisedText.map((str, index) => {
-                    return (
-                      <TableRow key={index}>
-                        <TableCell component="th" scope="row">
-                          {str}
+              <Grid container>
+                <Grid
+                  item
+                  xs={8}
+                  my={100}
+                  marginY={100}
+                  pr={10}
+                  style={{ marginRight: "25px" }}
+                >
+                  <EditorWithCode
+                    codeText={this.state.code}
+                    style={{ height: "100%" }}
+                  />
+                </Grid>
+                <Grid item xs={3} ml={25}>
+                  <Table className={classes.table}>
+                    <TableHead>
+                      <TableRow>
+                        <TableCell>
+                          <Typography variant="h6">Finalised Text</Typography>
                         </TableCell>
                       </TableRow>
-                    );
-                  })}
-                </TableBody>
-              </Table>
+                    </TableHead>
+                    <TableBody>
+                      {finalisedText.map((str, index) => {
+                        return (
+                          <TableRow key={index}>
+                            <TableCell component="th" scope="row">
+                              {str}
+                            </TableCell>
+                          </TableRow>
+                        );
+                      })}
+                    </TableBody>
+                  </Table>
+                </Grid>
+              </Grid>
             </Paper>
           </Grid>
         </Grid>
