@@ -15,7 +15,7 @@ function buildHtml(buildedCommand) {
   let components = JSON.parse(
     fs.readFileSync("./src/api/jsonRes/jsonComponents.json")
   );
-  console.log(buildedCommand);
+  
   //clean up template from null and undefinded
   template = template.filter(function (el) {
     return el != null
@@ -59,7 +59,7 @@ function addIntoElementWithId(template, component, id) {
   for (const key of Object.keys(template)) {
     if (template[key]['id'] == id) template[key]['html'].push(component)
     else if (Array.isArray(template[key]['html']))
-      addIntoElementWithId(template[key], component, id)
+      addIntoElementWithId(template[key]['html'], component, id)
   }
 }
 
