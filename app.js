@@ -51,7 +51,7 @@ app.use(cors());
 // })
 app.use("/api", routesV1);
 
-app.use("/", (req, res) => {
+app.get("/", (req, res) => {
   res.sendFile("./src/client/build/index.html");
 });
 
