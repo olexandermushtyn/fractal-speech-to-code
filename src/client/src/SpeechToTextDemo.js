@@ -17,11 +17,9 @@ import {
   Select,
   MenuItem,
   FormHelperText,
-  Box,
 } from "@material-ui/core";
 import withWidth, { isWidthUp } from "@material-ui/core/withWidth";
 import SpeechToText from "speech-to-text";
-import { spacing } from "@material-ui/system";
 
 import supportedLanguages from "./supportedLanguages";
 
