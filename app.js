@@ -3,10 +3,13 @@ const fs = require("fs");
 const logger = require("./src/global/logger");
 const routesV1 = require("./src/api/domains/routes");
 const cors = require("cors");
+const path = require("path");
 
 const app = express();
 
 const port = process.env.PORT || "3000";
+
+__dirname = path.resolve();
 
 app.use(function (req, res, next) {
   // Website you wish to allow to connect
@@ -52,7 +55,7 @@ app.use(cors());
 app.use("/api", routesV1);
 
 app.get("/", (req, res) => {
-  res.sendFile("./src/client/build/index.html");
+  res.sendFile(__dirname + "/src/" + "client/" + "build/" + "/index.html");
 });
 
 fs.writeFileSync("./src/api/jsonRes/modelOfHtml.json", "[]");
